@@ -98,7 +98,15 @@ export default {
      * Bind on parent element if wrap is true
      */
     getElem() {
-      return this.config.wrap ? this.$el.parentNode : this.$el
+      if (this.config.appendTo && this.config.appendTo instanceof HTMLElement) {
+        return this.config.appendTo;
+      }
+      else if (this.config.wrap) {
+        return this.$el.parentNode;
+      }
+      else {
+        this.$el; 
+      }
     },
 
     /**
